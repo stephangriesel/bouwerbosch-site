@@ -8,7 +8,7 @@ function App() {
           className='grid place-items-center absolute w-full top-0 z-50'
           aria-label='Primary Navigation'
         >
-          <a href='/' aria-label='Go Home' className='p-1 m-4'>
+          <a href='/' aria-label='Go Home' className='p-1 m-4 focus:outline-none focus-visible:ring-4 ring-accent rounded-full transition-shadow'>
             <svg
               version='1.0'
               xmlns='http://www.w3.org/2000/svg'
@@ -110,9 +110,17 @@ c28 -3 59 -13 70 -23z'
             </svg>
           </a>
         </nav>
+        <header className='min-h-screen flex flex-col justify-evenly items-center relative'>
+          <img src="" alt=""/>
+          <h1></h1>
+          <a href=""></a>
+        </header>
       </div>
     </div>
   );
 }
 
 export default App;
+
+// set up contentful
+// create query for header, content, footer
