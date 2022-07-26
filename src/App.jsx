@@ -1,6 +1,61 @@
+import {useState, useEffect} from "react";
+
 import './App.css';
 
+// Query
+const query = `
+{
+  headerCollection {
+    items {
+      logo {
+        url
+      }
+      titleText
+      titleDescription
+    }
+  }
+}
+`
+
+// Environment variables
+const {REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN} = process.env;
+
 function App() {
+  // define the initial state
+  const [header, setHeader] = useState(null);
+  console.log('check header state:', header);
+
+  useEffect(() => {
+    window
+      // Change to template string & use template literals to define environment variable
+      .fetch(
+        `https://graphql.contentful.com/content/v1/spaces/${REACT_APP_SPACE_ID}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // Authenticate the request
+            Authorization: `Bearer ${REACT_APP_CDA_TOKEN}`,
+          },
+          // send the GraphQL query
+          body: JSON.stringify({query}),
+        }
+      )
+      .then((response) => response.json())
+      .then(({data, errors}) => {
+        if (errors) {
+          console.error(errors);
+        }
+
+        // rerender the entire component with new data
+        setHeader(data.headerCollection.items[0]);
+      });
+  }, []);
+
+  // show a loading screen case the data hasn't arrived yet
+  if (!header) {
+    return '';
+  }
   return (
     <div className='App bg-bkg text-white selection:bg-accent selection:text-bkg overflow-hidden'>
       <div id='parallax'>
@@ -8,7 +63,11 @@ function App() {
           className='grid place-items-center absolute w-full top-0 z-50'
           aria-label='Primary Navigation'
         >
-          <a href='/' aria-label='Go Home' className='p-1 m-4 focus:outline-none focus-visible:ring-4 ring-accent rounded-full transition-shadow'>
+          <a
+            href='/'
+            aria-label='Go Home'
+            className='p-1 m-4 focus:outline-none focus-visible:ring-4 ring-accent rounded-full transition-shadow'
+          >
             <svg
               version='1.0'
               xmlns='http://www.w3.org/2000/svg'
@@ -16,7 +75,7 @@ function App() {
               height='270.000000pt'
               viewBox='0 0 363.000000 270.000000'
               preserveAspectRatio='xMidYMid meet'
-              class="w-32 sm:w-48 lg:w-56"
+              class='w-32 sm:w-48 lg:w-56'
             >
               <g
                 transform='translate(0.000000,270.000000) scale(0.100000,-0.100000)'
@@ -111,9 +170,9 @@ c28 -3 59 -13 70 -23z'
           </a>
         </nav>
         <header className='min-h-screen flex flex-col justify-evenly items-center relative'>
-          <img src="" alt=""/>
+          <img src='' alt='' />
           <h1></h1>
-          <a href=""></a>
+          <a href=''></a>
         </header>
       </div>
     </div>
