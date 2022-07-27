@@ -18,7 +18,7 @@ const query = `
 `
 
 // Environment variables
-const {REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN} = process.env;
+const {REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN} = import.meta.env;
 
 function App() {
   // define the initial state
