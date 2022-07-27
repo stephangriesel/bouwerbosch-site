@@ -18,7 +18,7 @@ const query = `
 `
 
 // Environment variables
-const {REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN} = import.meta.env;
+const {VITE_REACT_APP_SPACE_ID, VITE_REACT_APP_CDA_TOKEN} = import.meta.env;
 
 function App() {
   // define the initial state
@@ -29,13 +29,13 @@ function App() {
     window
       // Change to template string & use template literals to define environment variable
       .fetch(
-        `https://graphql.contentful.com/content/v1/spaces/${REACT_APP_SPACE_ID}`,
+        `https://graphql.contentful.com/content/v1/spaces/${VITE_REACT_APP_SPACE_ID}`,
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             // Authenticate the request
-            Authorization: `Bearer ${REACT_APP_CDA_TOKEN}`,
+            Authorization: `Bearer ${VITE_REACT_APP_CDA_TOKEN}`,
           },
           // send the GraphQL query
           body: JSON.stringify({query}),
