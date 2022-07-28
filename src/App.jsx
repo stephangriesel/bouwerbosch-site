@@ -10,6 +10,12 @@ const query = `
       logo {
         url
       }
+      hero {
+        url
+      }
+      heroTitle
+      heroDescription
+      heroUrl
       titleText
       titleDescription
     }
@@ -74,9 +80,9 @@ function App() {
           </a>
         </nav>
         <header className='min-h-screen flex flex-col justify-evenly items-center relative'>
-          <img src='' alt='' />
-          <h1></h1>
-          <a href=''></a>
+          <img className="absolute h-full w-full object-cover obj" src={header.hero.url} aria-hidden="true" />
+          <h1>{header.heroTitle}</h1>
+          <a href={header.hero.heroUrl}></a>
         </header>
       </div>
     </div>
