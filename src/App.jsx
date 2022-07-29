@@ -18,6 +18,7 @@ const query = `
       heroUrl
       titleText
       titleDescription
+      ctaText
     }
   }
 }
@@ -66,7 +67,7 @@ function App() {
     <div className='App bg-bkg text-white selection:bg-accent selection:text-bkg overflow-hidden'>
       <div id='parallax'>
         <nav
-          className='grid place-items-center absolute w-full top-0 z-50'
+          className='grid place-items-center absolute w-full top-0 z-50 drop-shadow-text-sm'
           aria-label='Primary Navigation'
         >
           <a
@@ -80,9 +81,11 @@ function App() {
           </a>
         </nav>
         <header className='min-h-screen flex flex-col justify-evenly items-center relative'>
-          <img className="absolute h-full w-full object-cover obj" src={header.hero.url} aria-hidden="true" />
-          <h1>{header.heroTitle}</h1>
-          <a href={header.hero.heroUrl}></a>
+          <img className="absolute h-full w-full object-cover object-center -z-5" src={header.hero.url} aria-hidden="true" />
+          <h1 className="text-5xl text-center z-10 font-bold tracking-wide py-12 px-20">{header.titleText}</h1>
+          <a href={header.heroUrl} className="bg-accent text-bkg font-medium py-3 px-8 rounded-full border border-bkg focus:outline-none z-10 focus-visible:ring-4 ring-accent ring-offset-bkg ring-offset-2 hover:bg-accent/90">
+            <span className="uppercase tracking-wide">{header.ctaText}</span>
+          </a>
         </header>
       </div>
     </div>
