@@ -110,6 +110,17 @@ function App() {
               {main.paragraphIntro}
             </p>
           </section>
+          <section aria-labelledby="slider" class="container grid gap-4 text-center sm:text-left relative">
+            <div>
+              <small className="tracking-widest text-accent uppercase drop-shadow-text-sm">Slider Dynamic Text Goes Here</small>
+              <h2 id="slider" className="text-3xl font-bold tracking-wide drop-shadow-md">Slider Dynamic Text Goes Here</h2>
+            </div>
+            <div className="flex flex-wrap:sm flex-nowrap justify-center sm:justify-between items-center space-x-4 space-y-4">
+              <p className="text-muted max-w-2xl drop-shadow-text-sm">
+                Slider Dynamic Text Goes Here
+              </p>
+            </div>
+          </section>
         </main>
       </div>
     </div>
