@@ -222,7 +222,7 @@ function App() {
                   data-slideBtn=''
                   id='prev'
                   aria-label='show previous image'
-                  className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg'
+                  className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg ring-accent'
                 >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -268,7 +268,7 @@ function App() {
                   data-slideBtn=''
                   id='next'
                   aria-label='show next image'
-                  className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg'
+                  className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg ring-accent'
                 >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
