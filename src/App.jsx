@@ -200,8 +200,10 @@ function App() {
           </section>
           <section
             aria-labelledby='slider'
-            class='container grid gap-4 text-center sm:text-left relative'
+            class='container grid gap-4 text-center sm:text-left'
           >
+            <div className="relative">
+            <div className="hidden sm:block absolute w-8 bg-accent/10 -left-4 h-full"></div>
             <div>
               <small className='tracking-widest text-accent uppercase drop-shadow-text-sm'>
                 Slider Dynamic Text Goes Here
@@ -222,7 +224,8 @@ function App() {
                   data-slideBtn=''
                   id='prev'
                   aria-label='show previous image'
-                  className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg ring-accent'
+                  className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg ring-accent disabled:bg-accent/20 disabled:text-accent'
+                  disabled
                 >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -268,7 +271,7 @@ function App() {
                   data-slideBtn=''
                   id='next'
                   aria-label='show next image'
-                  className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg ring-accent'
+                  className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg ring-accent disabled:bg-accent/20 disabled:text-accent'
                 >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -311,6 +314,7 @@ function App() {
                   </svg>
                 </button>
               </div>
+            </div>
             </div>
           </section>
         </main>
