@@ -28,6 +28,26 @@ const query = `
       paragraphIntro
     }
   }
+  imageSliderCollection {
+    items {
+      slider {
+        url
+        description
+      }
+      slider2 {
+        url
+      }
+      slider3 {
+        url 
+      }
+      slider4 {
+        url
+      }
+      slider5 {
+        url
+      }
+    }
+  }
 }
 `;
 
@@ -41,6 +61,9 @@ function App() {
 
   const [main, setMain] = useState(null);
   console.log('check main state:', main);
+
+  const [image, setImage] = useState(null);
+  console.log('check image state:', image);
 
   useEffect(() => {
     window
@@ -67,11 +90,12 @@ function App() {
         // rerender the entire component with new data
         setHeader(data.headerCollection.items[0]);
         setMain(data.mainCollection.items[0]);
+        setImage(data.imageSliderCollection.items[0]);
       });
   }, []);
 
   // show a loading screen case the data hasn't arrived yet
-  if (!header || !main) {
+  if (!header || !main || !image) {
     return '';
   }
   return (
@@ -317,6 +341,14 @@ function App() {
             </div>
             </div>
           </section>
+          <div className='-mt-10 sm:-mt-20 lg:-mt-36 container xs:w-screen'>
+            <div data-slideContainer>
+              <div className="data-slide">
+                <img src={image.slider.url} alt={image.slider.description} />
+                <p>{image.slider.description}</p>
+              </div>
+            </div>
+          </div>
         </main>
       </div>
     </div>
