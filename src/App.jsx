@@ -102,6 +102,25 @@ function App() {
   if (!header || !main || !image) {
     return '';
   }
+
+  // image slider
+  const slideBtns = document.querySelectorAll(['data-slidebtn']);
+  const slideContainer = document.querySelectorAll(['data-slidecontainer']);
+  console.log('check container', slideContainer);
+  const slides = [...document.querySelectorAll(['data-slide'])];
+  let currentIndex = 0;
+
+  // image slider functions
+  function handleSlideBtnClick(e) {
+    e.currentTarget.id === 'prev' ? currentIndex-- : currentIndex++;
+    console.log('check clicks', currentIndex);
+  }
+
+  // image slider event listeners
+  slideBtns.forEach((btn) =>
+    btn.addEventListener('click', handleSlideBtnClick)
+  );
+
   return (
     <div className='App bg-bkg text-base text-white selection:bg-accent selection:text-bkg'>
       <div id='parallax'>
@@ -209,7 +228,7 @@ function App() {
         <main className='relative mt-16 sm:mt-24 lg:mt-40 pb-16 -mb-16 grid gap-16 sm:gap-24 lg:gap-40 overflow-hidden'>
           <section
             aria-labelledby='headline'
-            class='container grid gap-4 text-center max-w-prose'
+            className='container grid gap-4 text-center max-w-prose'
           >
             <div>
               <small className='tracking-widest text-accent uppercase drop-shadow-text-sm'>
@@ -228,140 +247,181 @@ function App() {
           </section>
           <section
             aria-labelledby='slider'
-            class='container grid gap-4 text-center sm:text-left'
+            className='container grid gap-4 text-center sm:text-left'
           >
-            <div className="relative">
-            <div className="hidden sm:block absolute w-8 bg-accent/10 -left-4 h-full"></div>
-            <div>
-              <small className='tracking-widest text-accent uppercase drop-shadow-text-sm'>
-                Slider Dynamic Text Goes Here
-              </small>
-              <h2
-                id='slider'
-                className='text-3xl font-bold tracking-wide drop-shadow-md'
-              >
-                Slider Dynamic Text Goes Here
-              </h2>
-            </div>
-            <div className='flex flex-wrap:sm flex-nowrap justify-center sm:justify-between items-center space-x-4 space-y-4'>
-              <p className='text-muted max-w-2xl drop-shadow-text-sm'>
-                Slider Dynamic Text Goes Here
-              </p>
-              <div className='flex space-x-4'>
-                <button
-                  data-slideBtn=''
-                  id='prev'
-                  aria-label='show previous image'
-                  className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg ring-accent disabled:bg-accent/20 disabled:text-accent'
-                  disabled
+            <div className='relative'>
+              <div className='hidden sm:block absolute w-8 bg-accent/10 -left-4 h-full'></div>
+              <div>
+                <small className='tracking-widest text-accent uppercase drop-shadow-text-sm'>
+                  Slider Dynamic Text Goes Here
+                </small>
+                <h2
+                  id='slider'
+                  className='text-3xl font-bold tracking-wide drop-shadow-md'
                 >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='36'
-                    height='36'
-                    className='pointer-events-none'
-                    fill='currentColor'
-                    viewBox='0 0 256 256'
-                  >
-                    <rect width='256' height='256' fill='none'></rect>
-                    <circle
-                      cx='128'
-                      cy='128'
-                      r='96'
-                      fill='none'
-                      stroke='currentColor'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      stroke-width='24'
-                    ></circle>
-                    <polyline
-                      points='121.9 161.9 88 128 121.9 94.1'
-                      fill='none'
-                      stroke='currentColor'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      stroke-width='24'
-                    ></polyline>
-                    <line
-                      x1='168'
-                      y1='128'
-                      x2='88'
-                      y2='128'
-                      fill='none'
-                      stroke='currentColor'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      stroke-width='24'
-                    ></line>
-                  </svg>
-                </button>
-                <button
-                  data-slideBtn=''
-                  id='next'
-                  aria-label='show next image'
-                  className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg ring-accent disabled:bg-accent/20 disabled:text-accent'
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='36'
-                    height='36'
-                    className='pointer-events-none'
-                    fill='currentColor'
-                    viewBox='0 0 256 256'
-                  >
-                    <rect width='256' height='256' fill='none'></rect>
-                    <circle
-                      cx='128'
-                      cy='128'
-                      r='96'
-                      fill='none'
-                      stroke='currentColor'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      stroke-width='24'
-                    ></circle>
-                    <polyline
-                      points='134.1 161.9 168 128 134.1 94.1'
-                      fill='none'
-                      stroke='currentColor'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      stroke-width='24'
-                    ></polyline>
-                    <line
-                      x1='88'
-                      y1='128'
-                      x2='168'
-                      y2='128'
-                      fill='none'
-                      stroke='currentColor'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      stroke-width='24'
-                    ></line>
-                  </svg>
-                </button>
+                  Slider Dynamic Text Goes Here
+                </h2>
               </div>
-            </div>
+              <div className='flex flex-wrap:sm flex-nowrap justify-center sm:justify-between items-center space-x-4 space-y-4'>
+                <p className='text-muted max-w-2xl drop-shadow-text-sm'>
+                  Slider Dynamic Text Goes Here
+                </p>
+                <div className='flex space-x-4'>
+                  <button
+                    onClick={handleSlideBtnClick}
+                    data-slidebtn
+                    id='prev'
+                    aria-label='show previous image'
+                    className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg ring-accent disabled:bg-accent/20 disabled:text-accent'
+                    disabled
+                  >
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='36'
+                      height='36'
+                      className='pointer-events-none'
+                      fill='currentColor'
+                      viewBox='0 0 256 256'
+                    >
+                      <rect width='256' height='256' fill='none'></rect>
+                      <circle
+                        cx='128'
+                        cy='128'
+                        r='96'
+                        fill='none'
+                        stroke='currentColor'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                        stroke-width='24'
+                      ></circle>
+                      <polyline
+                        points='121.9 161.9 88 128 121.9 94.1'
+                        fill='none'
+                        stroke='currentColor'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                        stroke-width='24'
+                      ></polyline>
+                      <line
+                        x1='168'
+                        y1='128'
+                        x2='88'
+                        y2='128'
+                        fill='none'
+                        stroke='currentColor'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                        stroke-width='24'
+                      ></line>
+                    </svg>
+                  </button>
+                  <button
+                    onClick={handleSlideBtnClick}
+                    data-slidebtn
+                    id='next'
+                    aria-label='show next image'
+                    className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg ring-accent disabled:bg-accent/20 disabled:text-accent'
+                  >
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='36'
+                      height='36'
+                      className='pointer-events-none'
+                      fill='currentColor'
+                      viewBox='0 0 256 256'
+                    >
+                      <rect width='256' height='256' fill='none'></rect>
+                      <circle
+                        cx='128'
+                        cy='128'
+                        r='96'
+                        fill='none'
+                        stroke='currentColor'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                        stroke-width='24'
+                      ></circle>
+                      <polyline
+                        points='134.1 161.9 168 128 134.1 94.1'
+                        fill='none'
+                        stroke='currentColor'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                        stroke-width='24'
+                      ></polyline>
+                      <line
+                        x1='88'
+                        y1='128'
+                        x2='168'
+                        y2='128'
+                        fill='none'
+                        stroke='currentColor'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                        stroke-width='24'
+                      ></line>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </section>
           <div className='-mt-10 sm:-mt-20 lg:-mt-36 container xs:w-screen'>
-            <div className='flex transition-transform duration-500' data-slideContainer>
-              <div data-slide className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'>
-                <img className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer' src={image.slider.url} alt={image.slider.description} />
-                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>{image.slider.description}</p>
+            <div
+              className='flex transition-transform duration-500'
+              data-slidecontainer
+            >
+              <div
+                data-slide
+                className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'
+              >
+                <img
+                  className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer'
+                  src={image.slider.url}
+                  alt={image.slider.description}
+                />
+                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>
+                  {image.slider.description}
+                </p>
               </div>
-              <div data-slide className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'>
-                <img className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer' src={image.slider2.url} alt={image.slider2.description} />
-                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>{image.slider2.description}</p>
+              <div
+                data-slide
+                className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'
+              >
+                <img
+                  className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer'
+                  src={image.slider2.url}
+                  alt={image.slider2.description}
+                />
+                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>
+                  {image.slider2.description}
+                </p>
               </div>
-              <div data-slide className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'>
-                <img className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer' src={image.slider3.url} alt={image.slider3.description} />
-                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>{image.slider3.description}</p>
+              <div
+                data-slide
+                className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'
+              >
+                <img
+                  className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer'
+                  src={image.slider3.url}
+                  alt={image.slider3.description}
+                />
+                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>
+                  {image.slider3.description}
+                </p>
               </div>
-              <div data-slide className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'>
-                <img className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer' src={image.slider3.url} alt={image.slider3.description} />
-                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>{image.slider3.description}</p>
+              <div
+                data-slide
+                className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'
+              >
+                <img
+                  className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer'
+                  src={image.slider3.url}
+                  alt={image.slider3.description}
+                />
+                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>
+                  {image.slider3.description}
+                </p>
               </div>
             </div>
           </div>
