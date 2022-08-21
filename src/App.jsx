@@ -36,15 +36,19 @@ const query = `
       }
       slider2 {
         url
+        description
       }
       slider3 {
-        url 
+        url
+        description 
       }
       slider4 {
         url
+        description
       }
       slider5 {
         url
+        description
       }
     }
   }
@@ -342,10 +346,22 @@ function App() {
             </div>
           </section>
           <div className='-mt-10 sm:-mt-20 lg:-mt-36 container xs:w-screen'>
-            <div data-slideContainer>
-              <div className="data-slide">
-                <img src={image.slider.url} alt={image.slider.description} />
-                <p>{image.slider.description}</p>
+            <div className='flex transition-transform duration-500' data-slideContainer>
+              <div data-slide className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'>
+                <img className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer' src={image.slider.url} alt={image.slider.description} />
+                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>{image.slider.description}</p>
+              </div>
+              <div data-slide className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'>
+                <img className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer' src={image.slider2.url} alt={image.slider2.description} />
+                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>{image.slider2.description}</p>
+              </div>
+              <div data-slide className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'>
+                <img className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer' src={image.slider3.url} alt={image.slider3.description} />
+                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>{image.slider3.description}</p>
+              </div>
+              <div data-slide className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'>
+                <img className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer' src={image.slider3.url} alt={image.slider3.description} />
+                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>{image.slider3.description}</p>
               </div>
             </div>
           </div>
