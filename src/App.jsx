@@ -169,25 +169,25 @@ function App() {
                 y2='216'
                 fill='none'
                 stroke='#000000'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='24'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='24'
               ></line>
               <path
                 d='M83.3,216A88,88,0,0,1,32,136V88H208v48a88,88,0,0,1-51.3,80'
                 fill='none'
                 stroke='#000000'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='24'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='24'
               ></path>
               <path
                 d='M208,88h4a32,32,0,0,1,32,32v8a32,32,0,0,1-32,32h-7.4'
                 fill='none'
                 stroke='#000000'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='24'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='24'
               ></path>
               <line
                 x1='80'
@@ -196,9 +196,9 @@ function App() {
                 y2='48'
                 fill='none'
                 stroke='#000000'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='24'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='24'
               ></line>
               <line
                 x1='120'
@@ -207,9 +207,9 @@ function App() {
                 y2='48'
                 fill='none'
                 stroke='#000000'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='24'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='24'
               ></line>
               <line
                 x1='160'
@@ -218,9 +218,9 @@ function App() {
                 y2='48'
                 fill='none'
                 stroke='#000000'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='24'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='24'
               ></line>
             </svg>{' '}
           </a>
@@ -290,17 +290,17 @@ function App() {
                         r='96'
                         fill='none'
                         stroke='currentColor'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                        stroke-width='24'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='24'
                       ></circle>
                       <polyline
                         points='121.9 161.9 88 128 121.9 94.1'
                         fill='none'
                         stroke='currentColor'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                        stroke-width='24'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='24'
                       ></polyline>
                       <line
                         x1='168'
@@ -309,9 +309,9 @@ function App() {
                         y2='128'
                         fill='none'
                         stroke='currentColor'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                        stroke-width='24'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='24'
                       ></line>
                     </svg>
                   </button>
@@ -337,17 +337,17 @@ function App() {
                         r='96'
                         fill='none'
                         stroke='currentColor'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                        stroke-width='24'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='24'
                       ></circle>
                       <polyline
                         points='134.1 161.9 168 128 134.1 94.1'
                         fill='none'
                         stroke='currentColor'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                        stroke-width='24'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='24'
                       ></polyline>
                       <line
                         x1='88'
@@ -356,9 +356,9 @@ function App() {
                         y2='128'
                         fill='none'
                         stroke='currentColor'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                        stroke-width='24'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='24'
                       ></line>
                     </svg>
                   </button>
