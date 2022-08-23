@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 
 import './App.css';
 
@@ -58,7 +58,24 @@ const query = `
 // Environment variables
 const {VITE_REACT_APP_SPACE_ID, VITE_REACT_APP_CDA_TOKEN} = import.meta.env;
 
-function App() {
+function App(eventType, handler) {
+
+  const handlerRef = useRef(handler);
+
+  useEffect(() => {
+    handlerRef.current = handler;
+  });
+
+  useEffect(() => {
+    console.log("effect ran");
+    function internalHandler(e){
+      return handlerRef.current(e);
+    }
+
+    document.addEventListener(eventType, internalHandler);
+    return () => document.removeEventListener(eventType, internalHandler);
+  }, [eventType]);
+
   // define the initial state
   const [header, setHeader] = useState(null);
   console.log('check header state:', header);
