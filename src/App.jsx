@@ -58,7 +58,24 @@ const query = `
 // Environment variables
 const {VITE_REACT_APP_SPACE_ID, VITE_REACT_APP_CDA_TOKEN} = import.meta.env;
 
-function App() {
+function App(eventType,handler) {
+
+  const handlerRef = useRef(handler);
+
+  useEffect(() => {
+    handlerRef.current = handler;
+  })
+
+  useEffect(() => {
+    console.log("effect ran");
+    function internalHandler(e){
+      return handlerRef.current(e);
+    }
+
+    document.addEventListener(eventType,internalHandler);
+
+    return() => document.removeEventListener(eventType,internalHandler)
+  }, [eventType])
 
   // define the initial state
   const [header, setHeader] = useState(null);
@@ -107,7 +124,6 @@ function App() {
   // image slider
   const slideBtns = document.querySelectorAll(['data-slidebtn']);
   const slideContainer = document.querySelectorAll(['data-slidecontainer']);
-  console.log('check container', slideContainer);
   const slides = [...document.querySelectorAll(['data-slide'])];
   let currentIndex = 0;
 
@@ -115,6 +131,7 @@ function App() {
   function handleSlideBtnClick(e) {
     e.currentTarget.id === 'prev' ? currentIndex-- : currentIndex++;
     console.log('check clicks', currentIndex);
+    console.log("check event", e);
   }
 
   // image slider event listeners
