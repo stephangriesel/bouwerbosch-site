@@ -1,6 +1,18 @@
-import {useState, useEffect, useRef} from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import './App.css';
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+import "./styles.css";
+
+// import required modules
+import { Pagination } from "swiper";
 
 // Query
 const query = `
@@ -50,15 +62,23 @@ const query = `
         url
         description
       }
+      slider6 {
+        url
+        description
+      }
+      slider7 {
+        url
+        description
+      }
     }
   }
 }
 `;
 
 // Environment variables
-const {VITE_REACT_APP_SPACE_ID, VITE_REACT_APP_CDA_TOKEN} = import.meta.env;
+const { VITE_REACT_APP_SPACE_ID, VITE_REACT_APP_CDA_TOKEN } = import.meta.env;
 
-function App(eventType,handler) {
+function App(eventType, handler) {
 
   const handlerRef = useRef(handler);
 
@@ -68,13 +88,13 @@ function App(eventType,handler) {
 
   useEffect(() => {
     console.log("effect ran");
-    function internalHandler(e){
+    function internalHandler(e) {
       return handlerRef.current(e);
     }
 
-    document.addEventListener(eventType,internalHandler);
+    document.addEventListener(eventType, internalHandler);
 
-    return() => document.removeEventListener(eventType,internalHandler)
+    return () => document.removeEventListener(eventType, internalHandler)
   }, [eventType])
 
   // define the initial state
@@ -100,11 +120,11 @@ function App(eventType,handler) {
             Authorization: `Bearer ${VITE_REACT_APP_CDA_TOKEN}`,
           },
           // send the GraphQL query
-          body: JSON.stringify({query}),
+          body: JSON.stringify({ query }),
         }
       )
       .then((response) => response.json())
-      .then(({data, errors}) => {
+      .then(({ data, errors }) => {
         if (errors) {
           console.error(errors);
         }
@@ -265,184 +285,40 @@ function App(eventType,handler) {
           </section>
           <section
             aria-labelledby='slider'
-            className='container grid gap-4 text-center sm:text-left'
+            className='-mt-10 sm:-mt-20 lg:-mt-36 container xs:w-screen'
           >
-            <div className='relative'>
-              <div className='hidden sm:block absolute w-8 bg-accent/10 -left-4 h-full'></div>
-              <div>
-                <small className='tracking-widest text-accent uppercase drop-shadow-text-sm'>
-                  Slider Dynamic Text Goes Here
-                </small>
-                <h2
-                  id='slider'
-                  className='text-3xl font-bold tracking-wide drop-shadow-md'
-                >
-                  Slider Dynamic Text Goes Here
-                </h2>
-              </div>
-              <div className='flex flex-wrap:sm flex-nowrap justify-center sm:justify-between items-center space-x-4 space-y-4'>
-                <p className='text-muted max-w-2xl drop-shadow-text-sm'>
-                  Slider Dynamic Text Goes Here
-                </p>
-                <div className='flex space-x-4'>
-                  <button
-                    onClick={handleSlideBtnClick}
-                    data-slidebtn
-                    id='prev'
-                    aria-label='show previous image'
-                    className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg ring-accent disabled:bg-accent/20 disabled:text-accent'
-                    disabled
-                  >
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      width='36'
-                      height='36'
-                      className='pointer-events-none'
-                      fill='currentColor'
-                      viewBox='0 0 256 256'
-                    >
-                      <rect width='256' height='256' fill='none'></rect>
-                      <circle
-                        cx='128'
-                        cy='128'
-                        r='96'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth='24'
-                      ></circle>
-                      <polyline
-                        points='121.9 161.9 88 128 121.9 94.1'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth='24'
-                      ></polyline>
-                      <line
-                        x1='168'
-                        y1='128'
-                        x2='88'
-                        y2='128'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth='24'
-                      ></line>
-                    </svg>
-                  </button>
-                  <button
-                    onClick={handleSlideBtnClick}
-                    data-slidebtn
-                    id='next'
-                    aria-label='show next image'
-                    className='grid place-content-center bg-accent hover:bg-accent/90 rounded-full p-2 text-bkg focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg ring-accent disabled:bg-accent/20 disabled:text-accent'
-                  >
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      width='36'
-                      height='36'
-                      className='pointer-events-none'
-                      fill='currentColor'
-                      viewBox='0 0 256 256'
-                    >
-                      <rect width='256' height='256' fill='none'></rect>
-                      <circle
-                        cx='128'
-                        cy='128'
-                        r='96'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth='24'
-                      ></circle>
-                      <polyline
-                        points='134.1 161.9 168 128 134.1 94.1'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth='24'
-                      ></polyline>
-                      <line
-                        x1='88'
-                        y1='128'
-                        x2='168'
-                        y2='128'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth='24'
-                      ></line>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </section>
-          <div className='-mt-10 sm:-mt-20 lg:-mt-36 container xs:w-screen'>
-            <div
-              className='flex transition-transform duration-500'
-              data-slidecontainer
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={10}
+              // pagination={{
+              //   clickable: true,
+              // }}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 4,
+                  spaceBetween: 40,
+                },
+                1024: {
+                  slidesPerView: 5,
+                  spaceBetween: 50,
+                },
+              }}
+              modules={[Pagination]}
+              className="mySwiper"
             >
-              <div
-                data-slide
-                className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'
-              >
-                <img
-                  className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer'
-                  src={image.slider.url}
-                  alt={image.slider.description}
-                />
-                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>
-                  {image.slider.description}
-                </p>
-              </div>
-              <div
-                data-slide
-                className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'
-              >
-                <img
-                  className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer'
-                  src={image.slider2.url}
-                  alt={image.slider2.description}
-                />
-                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>
-                  {image.slider2.description}
-                </p>
-              </div>
-              <div
-                data-slide
-                className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'
-              >
-                <img
-                  className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer'
-                  src={image.slider3.url}
-                  alt={image.slider3.description}
-                />
-                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>
-                  {image.slider3.description}
-                </p>
-              </div>
-              <div
-                data-slide
-                className='relative w-full xs:w-auto flex-grow flex-shrink-0 xs:basis-96 pr-4'
-              >
-                <img
-                  className='object-cover h-full [@media(hover:hover)]:grayscale hover:grayscale-0 transition-all peer'
-                  src={image.slider3.url}
-                  alt={image.slider3.description}
-                />
-                <p className='absolute bottom-4 left-4 px-4 py-2 bg-bkg font-bold text-lg pointer-events-none [@media(hover:hover)]:opacity-0 peer-hover:opacity-100 transition-opacity'>
-                  {image.slider3.description}
-                </p>
-              </div>
-            </div>
-          </div>
+              <SwiperSlide><img src={image.slider.url} alt={image.slider.description} /></SwiperSlide>
+              <SwiperSlide><img src={image.slider2.url} alt={image.slider2.description} /></SwiperSlide>
+              <SwiperSlide><img src={image.slider3.url} alt={image.slider3.description} /></SwiperSlide>
+              <SwiperSlide><img src={image.slider4.url} alt={image.slider4.description} /></SwiperSlide>
+              <SwiperSlide><img src={image.slider5.url} alt={image.slider5.description} /></SwiperSlide>
+              <SwiperSlide><img src={image.slider6.url} alt={image.slider6.description} /></SwiperSlide>
+              <SwiperSlide><img src={image.slider7.url} alt={image.slider7.description} /></SwiperSlide>
+            </Swiper>
+          </section>
         </main>
       </div>
     </div>
