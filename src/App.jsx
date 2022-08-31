@@ -263,7 +263,7 @@ function App(eventType, handler) {
             </svg>{' '}
           </a>
         </header>
-        <main className='relative mt-16 sm:mt-24 lg:mt-40 pb-16 -mb-16 grid gap-16 sm:gap-24 lg:gap-40 overflow-hidden'>
+        <main className='relative mt-16 sm:mt-24 lg:mt-40 pb-16'>
           <section
             aria-labelledby='headline'
             className='container grid gap-4 text-center max-w-prose'
@@ -285,25 +285,22 @@ function App(eventType, handler) {
           </section>
           <section
             aria-labelledby='slider'
-            className='-mt-10 sm:-mt-20 lg:-mt-36 container xs:w-screen'
+            className='mt-10 sm:mt-20 lg:mt-32 container xs:w-screen'
           >
             <Swiper
               slidesPerView={1}
               spaceBetween={10}
-              // pagination={{
-              //   clickable: true,
-              // }}
               breakpoints={{
                 640: {
                   slidesPerView: 2,
                   spaceBetween: 20,
                 },
                 768: {
-                  slidesPerView: 4,
+                  slidesPerView: 2,
                   spaceBetween: 40,
                 },
                 1024: {
-                  slidesPerView: 5,
+                  slidesPerView: 3,
                   spaceBetween: 50,
                 },
               }}
