@@ -72,6 +72,17 @@ const query = `
       }
     }
   }
+  bottomCollection {
+    items {
+      emailSignUpBackground {
+        url
+        description
+      }
+      smallIntro
+      headlineIntro
+      paragraphIntro
+    }
+  }
 }
 `;
 
@@ -107,6 +118,9 @@ function App(eventType, handler) {
   const [image, setImage] = useState(null);
   console.log('check image state:', image);
 
+  const [bottom, setBottom] = useState(null);
+  console.log('check bottom state:', bottom);
+
   useEffect(() => {
     window
       // Change to template string & use template literals to define environment variable
@@ -133,11 +147,12 @@ function App(eventType, handler) {
         setHeader(data.headerCollection.items[0]);
         setMain(data.mainCollection.items[0]);
         setImage(data.imageSliderCollection.items[0]);
+        setBottom(data.bottomCollection.items[0])
       });
   }, []);
 
   // show a loading screen case the data hasn't arrived yet
-  if (!header || !main || !image) {
+  if (!header || !main || !image || !bottom){
     return '';
   }
 
@@ -316,6 +331,26 @@ function App(eventType, handler) {
               <SwiperSlide><img src={image.slider7.url} alt={image.slider7.description} /></SwiperSlide>
             </Swiper>
           </section>
+          <section aria-labelledby='map' className='container flex flex-wrap md:space-x-16 space-y-12 md:space-y-0 justify-between items-center'>
+            <img src={bottom.emailSignUpBackground.url} alt={bottom.emailSignUpBackground.description} width="400" className="grow md:flex-1" loading="lazy" />
+            <div className='grid gap-4 text-center md:text-left grow md:flex-1'>
+            <div className='relative'>
+              <div className="hidden md:block absolute w-8 bg-accent/10 -left-4 h-full"></div>
+              <small className='tracking-widest text-accent uppercase'>
+                {bottom.smallIntro}
+              </small>
+              <h2
+                id='map'
+                className='text-3xl font-bold tracking-wide drop-shadow-md'
+              >
+                {bottom.headlineIntro}
+              </h2>
+            </div>
+            <p className='text-muted max-w-2xl'>
+              {bottom.paragraphIntro}
+            </p>
+            </div>
+          </section>
         </main>
       </div>
     </div>
@@ -323,3 +358,4 @@ function App(eventType, handler) {
 }
 
 export default App;
+
