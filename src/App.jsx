@@ -81,6 +81,8 @@ const query = `
       smallIntro
       headlineIntro
       paragraphIntro
+      buttonText
+      buttonLabel
     }
   }
 }
@@ -152,7 +154,7 @@ function App(eventType, handler) {
   }, []);
 
   // show a loading screen case the data hasn't arrived yet
-  if (!header || !main || !image || !bottom){
+  if (!header || !main || !image || !bottom) {
     return '';
   }
 
@@ -334,22 +336,48 @@ function App(eventType, handler) {
           <section aria-labelledby='map' className='container flex flex-wrap md:space-x-16 space-y-12 md:space-y-0 justify-between items-center'>
             <img src={bottom.emailSignUpBackground.url} alt={bottom.emailSignUpBackground.description} width="400" className="grow md:flex-1" loading="lazy" />
             <div className='grid gap-4 text-center md:text-left grow md:flex-1'>
-            <div className='relative'>
-              <div className="hidden md:block absolute w-8 bg-accent/10 -left-4 h-full"></div>
+              <div className='relative'>
+                <div className="hidden md:block absolute w-8 bg-accent/10 -left-4 h-full"></div>
+                <small className='tracking-widest text-accent uppercase'>
+                  {bottom.smallIntro}
+                </small>
+                <h2
+                  id='map'
+                  className='text-3xl font-bold tracking-wide drop-shadow-md'
+                >
+                  {bottom.headlineIntro}
+                </h2>
+              </div>
+              <p className='text-muted max-w-2xl'>
+                {bottom.paragraphIntro}
+              </p>
+            </div>
+          </section>
+          <section aria-labelledby='cta' className='container grid gap-4 text-center max-w-prose'>
+            <div>
               <small className='tracking-widest text-accent uppercase'>
                 {bottom.smallIntro}
               </small>
               <h2
-                id='map'
+                id='cta'
                 className='text-3xl font-bold tracking-wide drop-shadow-md'
               >
                 {bottom.headlineIntro}
               </h2>
             </div>
-            <p className='text-muted max-w-2xl'>
+            <p className='text-muted max-w-2xl mx-auto'>
               {bottom.paragraphIntro}
             </p>
-            </div>
+            <form id="contact-form" className='border-4 border-accent rounded-full p-1 flex items-center justify-between max-w-md mx-auto'>
+              <input type="email" id="email" required placeholder='Email Address' className='p-2 mx-4 bg-transparent w-full text-sm flex-1 border-b-2 border-transparent rounded-none caret-accent placeholder:text-white focus:placeholder:text-muted focus:outline-none focus:border-accent' />
+              <label className='sr-only' htmlFor="email">{bottom.buttonLabel}</label>
+              <button
+                className='bg-accent text-bkg font-medium text-sm py-3 px-4 sm:px-8 rounded-full border border-bkg focus:outline-none z-10 focus-visible:ring-4 ring-accent ring-offset-bkg ring-offset-2 hover:bg-accent/90 flex space-x-2 items-center shrink-0' id='contact-btn'
+              >
+                <span className='uppercase tracking-wide'>{bottom.buttonText}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" className='pointer-events-none' viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M210.3,35.9,23.9,88.4a8,8,0,0,0-1.2,15l85.6,40.5a7.8,7.8,0,0,1,3.8,3.8l40.5,85.6a8,8,0,0,0,15-1.2L220.1,45.7A7.9,7.9,0,0,0,210.3,35.9Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="110.9" y1="145.1" x2="156.1" y2="99.9" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>
+              </button>
+            </form>
           </section>
         </main>
       </div>
