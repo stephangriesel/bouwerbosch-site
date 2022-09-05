@@ -380,6 +380,7 @@ function App(eventType, handler) {
             </form>
           </section>
         </main>
+        <footer className='border-t border-accent mt-16 sm:mt-24 lg:mt-40 py-6 sm:py-8 md:py-12'></footer>
       </div>
     </div>
   );
