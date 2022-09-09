@@ -397,7 +397,7 @@ function App(eventType, handler) {
               </p>
             </div>
           </section>
-          <section aria-labelledby='cta' className='container grid gap-4 text-center max-w-prose fade-up pt-24 pb-24'>
+          <section aria-labelledby='cta' className='container grid gap-4 text-center max-w-prose fade-up pt-24'>
             <div>
               <small className='tracking-widest text-accent uppercase'>
                 {bottom.smallIntro}
