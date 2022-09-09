@@ -216,8 +216,8 @@ function App(eventType, handler) {
   }
 
   return (
-    <div className='App bg-bkg text-base text-white selection:bg-accent selection:text-bkg'>
-      <div id='parallax'>
+    <div className='App bg-bkg text-base text-white selection:bg-accent selection:text-bkg overflow-hidden'>
+      <div className='h-screen pb-12 sm:pb-0 overflow-y-auto overflow-x-hidden relative scroll-smooth perspective' >
         <nav
           className='grid place-items-center absolute w-full top-0 z-50 drop-shadow-text-sm'
           aria-label='Primary Navigation'
@@ -232,20 +232,20 @@ function App(eventType, handler) {
             </div>
           </a>
         </nav>
-        <header className='min-h-screen flex flex-col justify-evenly items-center relative'>
+        <header className='min-h-screen flex flex-col justify-evenly items-center relative preserve-3d'>
           <div className='absolute bg-gradient-to-b inset-0 bottom-3/4 from-accent to-transparent'></div>
-          <div className='absolute bg-gradient-to-t inset-0 top=1/3 -bottom-32 from-bkg/80 to-transparent'></div>
+          <div className='absolute bg-gradient-to-t inset-0 top=1/3 -bottom-32 from-bkg/80 to-transparent distance-1'></div>
           <img
-            className='absolute h-full w-full object-cover object-center -z-5'
+            className='absolute h-full w-full object-cover object-center -z-5 distance-1'
             src={header.hero.url}
             aria-hidden='true'
           />
-          <h1 className='text-5xl text-center z-10 font-bold tracking-wide py-12 px-96 drop-shadow-text-sm lg:drop-shadow-text-lg'>
+          <h1 className='text-5xl text-center z-10 font-bold tracking-wide py-12 px-96 drop-shadow-text-sm lg:drop-shadow-text-lg distance-2'>
             {header.titleText}
           </h1>
           <a
             href={header.heroUrl}
-            className='bg-accent text-bkg font-medium py-3 px-8 rounded-full border border-bkg focus:outline-none z-10 focus-visible:ring-4 ring-accent ring-offset-bkg ring-offset-2 hover:bg-accent/90 flex space-x-2 drop-shadow-text-lg hover:drop-shadow-none transition-shadow items-center'
+            className='bg-accent text-bkg font-medium py-3 px-8 rounded-full border border-bkg focus:outline-none z-10 focus-visible:ring-4 ring-accent ring-offset-bkg ring-offset-2 hover:bg-accent/90 flex space-x-2 drop-shadow-text-lg hover:drop-shadow-none transition-shadow items-center distance-2'
           >
             <span className='uppercase tracking-wide'>{header.ctaText}</span>
             <svg
@@ -319,7 +319,7 @@ function App(eventType, handler) {
             </svg>{' '}
           </a>
         </header>
-        <main className='relative mt-16 sm:mt-24 lg:mt-40 pb-16'>
+        <main className='relative mt-16 pt-16 sm:mt-24 lg:mt-40 pb-16'>
           <section
             aria-labelledby='headline'
             className='container grid gap-4 text-center max-w-prose'
