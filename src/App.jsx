@@ -248,7 +248,7 @@ function App(eventType, handler) {
           <h1 className='text-5xl text-center z-10 font-bold tracking-wide py-12 px-96 drop-shadow-text-sm lg:drop-shadow-text-lg distance-2'>
             {header.titleText}
           </h1>
-          <a
+          {/* <a
             href={header.heroUrl}
             className='bg-accent text-bkg font-medium py-3 px-8 rounded-full border border-bkg focus:outline-none z-10 focus-visible:ring-4 ring-accent ring-offset-bkg ring-offset-2 hover:bg-accent/90 flex space-x-2 drop-shadow-text-lg hover:drop-shadow-none transition-shadow items-center distance-2'
           >
@@ -322,7 +322,7 @@ function App(eventType, handler) {
                 strokeWidth='24'
               ></line>
             </svg>{' '}
-          </a>
+          </a> */}
         </header>
         <main className='relative mt-16 pt-16 sm:mt-24 lg:mt-40 pb-16'>
           <section
