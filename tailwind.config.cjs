@@ -13,7 +13,7 @@ module.exports = {
       colors: {
         bkg: "#171819",
         muted: "#C9CBCF",
-        accent: "#66CCC1",
+        accent: "#a06428",
       },
       dropShadow: {
         "text-sm": "1px 1px 0px rgba(0, 0, 0, 0.90)",
