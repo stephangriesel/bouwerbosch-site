@@ -27,6 +27,8 @@ const query = `
       hero {
         url
       }
+      headerTitle
+      headerText
       heroTitle
       heroDescription
       heroUrl
@@ -172,9 +174,9 @@ function App(eventType, handler) {
   const contactInput = document.querySelector('#email');
 
   // send to database
-  function postEmailToDatabase(email){
+  function postEmailToDatabase(email) {
     console.info(`Your email is ${email}`);
-    return new Promise(resolve => setTimeout(resolve,2000));
+    return new Promise(resolve => setTimeout(resolve, 2000));
   }
 
   const contactBtnOptions = {
@@ -199,24 +201,24 @@ function App(eventType, handler) {
 
   }
 
-  function fadeUpObserverCallback(elsToWatch){
+  function fadeUpObserverCallback(elsToWatch) {
     elsToWatch.forEach((el) => {
-      if(el.isIntersecting){
+      if (el.isIntersecting) {
         el.target.classList.add('faded');
         fadeUpObserver.unobserve(el.target);
         el.target.addEventListener('transitionend', () => {
           el.target.classList.remove('fade-up', 'faded')
-        },{once:true})
+        }, { once: true })
       }
       console.log('working');
     })
   }
 
   const fadeUpObserverOptions = {
-    threshold:.3,
+    threshold: .3,
   }
 
-  const fadeUpObserver = new IntersectionObserver(fadeUpObserverCallback,fadeUpObserverOptions);
+  const fadeUpObserver = new IntersectionObserver(fadeUpObserverCallback, fadeUpObserverOptions);
 
   document.querySelectorAll('.fade-up').forEach((item) => {
     fadeUpObserver.observe(item);
@@ -235,7 +237,18 @@ function App(eventType, handler) {
             className='p-1 m-4 focus:outline-none focus-visible:ring-4 ring-accent rounded-full transition-shadow'
           >
             <div>
-              <img src={header.logo.url} alt='logo' />
+              {/* Header Text */}
+              <h1 className='text-5xl pt-10 md:pb-10 sm:pb-5 drop-shadow-md text-center z-10 font-bold tracking-wide lg:drop-shadow-text-lg md:distance-2'>
+                {header.headerTitle}
+              </h1>
+              <h2
+                id='headline'
+                className='md:text-2xl text-center font-bold tracking-wide'
+              >
+                {header.headerText}
+              </h2>
+              {/* Header Logo */}
+              {/* <img src={header.logo.url} alt='logo' /> */}
             </div>
           </a>
         </nav>
@@ -243,13 +256,13 @@ function App(eventType, handler) {
           <div className='absolute bg-gradient-to-b inset-0 bottom-3/4 from-accent to-transparent'></div>
           <div className='absolute bg-gradient-to-t inset-0 top=1/3 -bottom-32 from-bkg/80 to-transparent distance-1'></div>
           <img
-            className='absolute h-full w-full object-cover object-center -z-5 distance-1'
+            className='absolute h-full w-full object-cover object-top -z-5 distance-1'
             src={header.hero.url}
             aria-hidden='true'
           />
-          <h1 className='text-5xl text-center z-10 font-bold tracking-wide py-12 px-96 drop-shadow-text-sm lg:drop-shadow-text-lg distance-2'>
+          {/* <h1 className='text-5xl text-center z-10 font-bold tracking-wide py-12 px-96 drop-shadow-text-sm lg:drop-shadow-text-lg distance-2'>
             {header.titleText}
-          </h1>
+          </h1> */}
           {/* <a
             href={header.heroUrl}
             className='bg-accent text-bkg font-medium py-3 px-8 rounded-full border border-bkg focus:outline-none z-10 focus-visible:ring-4 ring-accent ring-offset-bkg ring-offset-2 hover:bg-accent/90 flex space-x-2 drop-shadow-text-lg hover:drop-shadow-none transition-shadow items-center distance-2'
@@ -327,7 +340,7 @@ function App(eventType, handler) {
           </a> */}
         </header>
         <main className='relative mt-16 pt-16 sm:mt-24 lg:mt-40 pb-16'>
-          <section
+          {/* <section
             aria-labelledby='headline'
             className='container grid gap-4 text-center max-w-prose fade-up'
           >
@@ -345,7 +358,7 @@ function App(eventType, handler) {
             <p className='text-muted drop-shadow-text-sm'>
               {main.paragraphIntro}
             </p>
-          </section>
+          </section> */}
           <section
             aria-labelledby='slider'
             className='mt-10 sm:mt-20 lg:mt-32 container xs:w-screen fade-up pt-24'
@@ -368,15 +381,15 @@ function App(eventType, handler) {
                 },
               }}
               modules={[Pagination, Navigation]}
-              navigation={true} 
+              navigation={true}
               className="mySwiper"
             >
-              <SwiperSlide><img src={image.slider.url} alt={image.slider.description} /></SwiperSlide>
+              {/* <SwiperSlide><img src={image.slider.url} alt={image.slider.description} /></SwiperSlide> */}
               <SwiperSlide><img src={image.slider2.url} alt={image.slider2.description} /></SwiperSlide>
               <SwiperSlide><img src={image.slider3.url} alt={image.slider3.description} /></SwiperSlide>
               <SwiperSlide><img src={image.slider4.url} alt={image.slider4.description} /></SwiperSlide>
               <SwiperSlide><img src={image.slider5.url} alt={image.slider5.description} /></SwiperSlide>
-              <SwiperSlide><img src={image.slider6.url} alt={image.slider6.description} /></SwiperSlide>
+              {/* <SwiperSlide><img src={image.slider6.url} alt={image.slider6.description} /></SwiperSlide> */}
               <SwiperSlide><img src={image.slider7.url} alt={image.slider7.description} /></SwiperSlide>
             </Swiper>
           </section>
@@ -415,7 +428,7 @@ function App(eventType, handler) {
             <p className='text-muted max-w-2xl mx-auto'>
               {bottom.paragraphIntro}
             </p>
-            <form id="contact-form" className='border-4 border-accent rounded-full p-1 flex items-center justify-between max-w-md mx-auto'>
+            {/* <form id="contact-form" className='border-4 border-accent rounded-full p-1 flex items-center justify-between max-w-md mx-auto'>
               <input type="email" id="email" required placeholder='Email Address' className='p-2 mx-4 bg-transparent w-full text-sm flex-1 border-b-2 border-transparent rounded-none caret-accent placeholder:text-white focus:placeholder:text-muted focus:outline-none focus:border-accent' />
               <label className='sr-only' htmlFor="email">{bottom.buttonLabel}</label>
               <button
@@ -424,7 +437,7 @@ function App(eventType, handler) {
                 <span className='uppercase tracking-wide'>{bottom.buttonText}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fills="#000000" className='pointer-events-none' viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M210.3,35.9,23.9,88.4a8,8,0,0,0-1.2,15l85.6,40.5a7.8,7.8,0,0,1,3.8,3.8l40.5,85.6a8,8,0,0,0,15-1.2L220.1,45.7A7.9,7.9,0,0,0,210.3,35.9Z" fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16"></path><line x1="110.9" y1="145.1" x2="156.1" y2="99.9" fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16"></line></svg>
               </button>
-            </form>
+            </form> */}
           </section>
         </main>
         <footer className="border-t border-accent mt-16 sm:mt-24 lg:mt-40 py-6 sm:py-8 md:py-12 fade-up">
