@@ -384,13 +384,13 @@ function App(eventType, handler) {
               navigation={true}
               className="mySwiper"
             >
-              {/* <SwiperSlide><img src={image.slider.url} alt={image.slider.description} /></SwiperSlide> */}
+              <SwiperSlide><img src={image.slider.url} alt={image.slider.description} /></SwiperSlide>
               <SwiperSlide><img src={image.slider2.url} alt={image.slider2.description} /></SwiperSlide>
               <SwiperSlide><img src={image.slider3.url} alt={image.slider3.description} /></SwiperSlide>
               <SwiperSlide><img src={image.slider4.url} alt={image.slider4.description} /></SwiperSlide>
               <SwiperSlide><img src={image.slider5.url} alt={image.slider5.description} /></SwiperSlide>
-              {/* <SwiperSlide><img src={image.slider6.url} alt={image.slider6.description} /></SwiperSlide> */}
-              <SwiperSlide><img src={image.slider7.url} alt={image.slider7.description} /></SwiperSlide>
+              {/* <SwiperSlide><img src={image.slider6.url} alt={image.slider6.description} /></SwiperSlide>
+              <SwiperSlide><img src={image.slider7.url} alt={image.slider7.description} /></SwiperSlide> */}
             </Swiper>
           </section>
           <section aria-labelledby='map' className='container flex flex-wrap md:space-x-16 space-y-12 md:space-y-0 justify-between items-center fade-up pt-16 pb-24'>
