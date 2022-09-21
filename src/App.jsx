@@ -8,11 +8,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 import "./styles.css";
 
 // import required modules
 import { Pagination } from "swiper";
+import { Navigation } from "swiper";
 
 // Query
 const query = `
@@ -365,7 +367,8 @@ function App(eventType, handler) {
                   spaceBetween: 50,
                 },
               }}
-              modules={[Pagination]}
+              modules={[Pagination, Navigation]}
+              navigation={true} 
               className="mySwiper"
             >
               <SwiperSlide><img src={image.slider.url} alt={image.slider.description} /></SwiperSlide>
