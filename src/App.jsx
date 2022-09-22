@@ -89,6 +89,25 @@ const query = `
       buttonLabel
     }
   }
+  footerCollection {
+    items {
+      footerSmallImage {
+         url
+      }
+      columnOneTitle
+      columnOneLineOne
+      columnOneLineTwo
+      columnOneLineThree
+      columnTwoTitle
+      columnTwoLineOne
+      columnTwoLineTwo
+      columnTwoLineThree
+      columnThreeTitle
+      columnThreeLineOne
+      columnThreeLineTwo
+      columnThreeLineThree
+    }
+  }
 }
 `;
 
@@ -128,6 +147,9 @@ function App(eventType, handler) {
 
   const [bottom, setBottom] = useState(null);
   console.log('check bottom state:', bottom);
+  
+  const [footer, setFooter] = useState(null);
+  console.log('check footer state:', footer);
 
   useEffect(() => {
     window
@@ -155,12 +177,13 @@ function App(eventType, handler) {
         setHeader(data.headerCollection.items[0]);
         setMain(data.mainCollection.items[0]);
         setImage(data.imageSliderCollection.items[0]);
-        setBottom(data.bottomCollection.items[0])
+        setBottom(data.bottomCollection.items[0]);
+        setFooter(data.footerCollection.items[0]);
       });
   }, []);
 
   // show a loading screen case the data hasn't arrived yet
-  if (!header || !main || !image || !bottom) {
+  if (!header || !main || !image || !bottom || !footer){
     return '';
   }
 
