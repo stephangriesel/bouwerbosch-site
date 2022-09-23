@@ -437,6 +437,7 @@ function App(eventType, handler) {
           <section aria-labelledby='map' className='container flex flex-wrap md:space-x-16 space-y-12 md:space-y-0 justify-between items-center fade-up pt-16 pb-5'>
             <img src={bottom.emailSignUpBackground.url} alt={bottom.emailSignUpBackground.description} width="400" className="grow md:flex-1" loading="lazy" />
             <div className='grid gap-4 text-center md:text-left grow md:flex-1'>
+            <Fade delay={150}>
               <div className='relative'>
                 <div className="hidden md:block absolute w-8 bg-accent/10 -left-4 h-full"></div>
                 <small className='tracking-widest text-accent uppercase'>
@@ -449,9 +450,12 @@ function App(eventType, handler) {
                   {bottom.headlineIntro}
                 </h2>
               </div>
+              </Fade>
+              <Fade delay={200}>
               <div className='text-muted max-w-2xl'>
                 <ReactMarkdown>{bottom.paragraphIntro}</ReactMarkdown>
               </div>
+              </Fade>
             </div>
           </section>
           </Fade>
@@ -482,12 +486,12 @@ function App(eventType, handler) {
             </form>
           </section> */}
         </main>
-        <Fade delay={250}>
+        <Fade delay={350}>
         <footer className="border-t border-accent mt-16 sm:mt-10 lg:mt-10 py-6 sm:py-8 md:py-12 fade-up">
           <div className="container flex flex-wrap md:justify-between items-center md:items-start gap-12">
             <div className="grid gap-2 grow justify-items-center md:justify-items-start basis-full md:basis-1/4">
               <img src={footer.footerSmallImage.url} className="w-32 sm:w-48 lg:w-56" />
-              {/* <p className="text-muted text-sm text-center md:text-left">{footer.textBelowSmallImage}</p> */}
+              <p className="text-muted text-sm text-center md:text-left">{footer.textBelowSmallImage}</p>
             </div>
             <nav aria-label="Secondary navigation" className="text-sm flex flex-col items-center sm:items-start sm:flex-row text-center sm:text-left gap-6 justify-between md:justify-around grow basis-full md:basis-1/2 mt-2 fade-up">
               <div className="grid gap-3">
