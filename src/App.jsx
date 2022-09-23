@@ -433,11 +433,9 @@ function App(eventType, handler) {
             </Swiper>
             </Fade>
           </div>
-          <Fade delay={350}>
           <section aria-labelledby='map' className='container flex flex-wrap md:space-x-16 space-y-12 md:space-y-0 justify-between items-center fade-up pt-16 pb-5'>
             <img src={bottom.emailSignUpBackground.url} alt={bottom.emailSignUpBackground.description} width="400" className="grow md:flex-1" loading="lazy" />
             <div className='grid gap-4 text-center md:text-left grow md:flex-1'>
-            <Fade delay={150}>
               <div className='relative'>
                 <div className="hidden md:block absolute w-8 bg-accent/10 -left-4 h-full"></div>
                 <small className='tracking-widest text-accent uppercase'>
@@ -450,15 +448,11 @@ function App(eventType, handler) {
                   {bottom.headlineIntro}
                 </h2>
               </div>
-              </Fade>
-              <Fade delay={200}>
               <div className='text-muted max-w-2xl'>
                 <ReactMarkdown>{bottom.paragraphIntro}</ReactMarkdown>
               </div>
-              </Fade>
             </div>
           </section>
-          </Fade>
           {/* <section aria-labelledby='cta' className='container grid gap-4 text-center max-w-prose fade-up pt-24'>
             <div>
               <small className='tracking-widest text-accent uppercase'>
