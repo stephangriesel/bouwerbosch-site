@@ -46,6 +46,7 @@ const query = `
       smallIntro
       headlineIntro
       paragraphIntro
+      paragraphIntroLink
     }
   }
   imageSliderCollection {
@@ -101,16 +102,25 @@ const query = `
       textBelowSmallImage
       columnOneTitle
       columnOneLineOne
+      columnOneLineOneLink
       columnOneLineTwo
+      columnOneLineTwoLink
       columnOneLineThree
+      columnOneLineThreeLink
       columnTwoTitle
       columnTwoLineOne
+      columnTwoLineOneLink
       columnTwoLineTwo
+      columnTwoLineTwoLink
       columnTwoLineThree
+      columnTwoLineThreeLink
       columnThreeTitle
       columnThreeLineOne
+      columnThreeLineOneLink
       columnThreeLineTwo
+      columnThreeLineTwoLink
       columnThreeLineThree
+      columnThreeLineThreeLink
     }
   }
 }
@@ -392,8 +402,8 @@ function App(eventType, handler) {
               </Fade>
             </div>
             <Fade delay={200}>
-            <p className='text-muted drop-shadow-text-sm'>
-              {main.paragraphIntro}
+            <p className='text-muted font-bold hover:text-accent uppercase drop-shadow-text-sm drop-shadow-text-lg'>
+              <a href={main.paragraphIntroLink}>{main.paragraphIntro}</a>
             </p>
             </Fade>
           </section>
@@ -492,17 +502,17 @@ function App(eventType, handler) {
                 <p className="font-bold underline decoration-accent decoration-4 underline-offset-2 tracking-wide px-2">{footer.columnOneTitle}</p>
                 <ul aria-label="About Traverse">
                   <li>
-                    <a href="https://open.spotify.com/artist/5HZFQNs0MnrxxtU7dvi4Te" className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
+                    <a href={footer.columnOneLineOneLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
                       {footer.columnOneLineOne}
                     </a>
                   </li>
                   <li>
-                    <a href="https://music.apple.com/us/artist/bouwer-bosch/332867250" className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
+                    <a href={footer.columnOneLineTwoLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
                     {footer.columnOneLineTwo}
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.deezer.com/en/artist/1539985" className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
+                    <a href={footer.columnOneLineThreeLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
                     {footer.columnOneLineThree}
                     </a>
                   </li>
@@ -512,12 +522,12 @@ function App(eventType, handler) {
                 <p className="font-bold underline decoration-accent decoration-4 underline-offset-2 tracking-wide px-2">{footer.columnTwoTitle}</p>
                 <ul aria-label="Traverse Locations">
                   <li>
-                    <a href="https://www.instagram.com/bouwerbosch/?hl=en" className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
+                    <a href={footer.columnTwoLineOneLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
                     {footer.columnTwoLineOne}
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.facebook.com/bouwerbosch/" className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
+                    <a href={footer.columnTwoLineTwoLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
                     {footer.columnTwoLineTwo}
                     </a>
                   </li>
@@ -532,12 +542,12 @@ function App(eventType, handler) {
                 <p className="font-bold underline decoration-accent decoration-4 underline-offset-2 tracking-wide px-2">{footer.columnThreeTitle}</p>
                 <ul aria-label="Contact Traverse">
                   <li>
-                    <a href="mailto:info@bouwerbosch.co.za?subject=Bespreking navraag" className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
+                    <a href={footer.columnThreeLineOneLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
                     {footer.columnThreeLineOne}
                     </a>
                   </li>
                   <li>
-                    <a href="mailto:info@bouwerbosch.co.za" className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
+                    <a href={footer.columnThreeLineTwoLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
                     {footer.columnThreeLineTwo}
                     </a>
                   </li>
