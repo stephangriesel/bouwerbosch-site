@@ -266,15 +266,19 @@ function App(eventType, handler) {
           >
             <div>
               {/* Header Text */}
+              <Fade delay={150}>
               <h1 className='text-5xl pt-10 md:pb-10 sm:pb-5 drop-shadow-md text-center z-10 font-bold tracking-wide lg:drop-shadow-text-lg md:distance-2'>
                 {header.headerTitle}
               </h1>
+              </Fade>
+              <Fade delay={300}>
               <h2
                 id='headline'
                 className='md:text-2xl text-center font-bold tracking-wide'
               >
                 {header.headerText}
               </h2>
+              </Fade>
               {/* Header Logo */}
               {/* <img src={header.logo.url} alt='logo' /> */}
             </div>
@@ -368,30 +372,36 @@ function App(eventType, handler) {
           </a> */}
         </header>
         <main className='relative mt-16 pt-16 sm:mt-24 lg:mt-40 pb-16'>
-          {/* <section
+          <section
             aria-labelledby='headline'
             className='container grid gap-4 text-center max-w-prose fade-up'
           >
             <div>
+              <Fade delay={100}>
               <small className='tracking-widest text-accent uppercase drop-shadow-text-sm'>
                 {main.smallIntro}
               </small>
+              </Fade>
+              <Fade delay={150}>
               <h2
                 id='headline'
-                className='text-3xl font-bold tracking-wide drop-shadow-md'
+                className='text-4xl pt-5 md:pb-5 sm:pb-5 drop-shadow-md text-center z-10 font-bold tracking-wide lg:drop-shadow-text-lg md:distance-2'
               >
                 {main.headlineIntro}
               </h2>
+              </Fade>
             </div>
+            <Fade delay={200}>
             <p className='text-muted drop-shadow-text-sm'>
               {main.paragraphIntro}
             </p>
-          </section> */}
-          <Fade
-            delay={500}
+            </Fade>
+          </section>
+          <div
             aria-labelledby='slider'
             className='mt-10 sm:mt-20 lg:mt-32 container xs:w-screen fade-up pt-24'
           >
+            <Fade delay={350}>
             <Swiper
               slidesPerView={1}
               spaceBetween={10}
@@ -421,8 +431,9 @@ function App(eventType, handler) {
               {/* <SwiperSlide><img src={image.slider6.url} alt={image.slider6.description} /></SwiperSlide>
               <SwiperSlide><img src={image.slider7.url} alt={image.slider7.description} /></SwiperSlide> */}
             </Swiper>
-          </Fade>
-          <Fade delay={500}>
+            </Fade>
+          </div>
+          <Fade delay={350}>
           <section aria-labelledby='map' className='container flex flex-wrap md:space-x-16 space-y-12 md:space-y-0 justify-between items-center fade-up pt-16 pb-5'>
             <img src={bottom.emailSignUpBackground.url} alt={bottom.emailSignUpBackground.description} width="400" className="grow md:flex-1" loading="lazy" />
             <div className='grid gap-4 text-center md:text-left grow md:flex-1'>
@@ -471,12 +482,12 @@ function App(eventType, handler) {
             </form>
           </section> */}
         </main>
-        <Fade delay={500}>
+        <Fade delay={250}>
         <footer className="border-t border-accent mt-16 sm:mt-10 lg:mt-10 py-6 sm:py-8 md:py-12 fade-up">
           <div className="container flex flex-wrap md:justify-between items-center md:items-start gap-12">
             <div className="grid gap-2 grow justify-items-center md:justify-items-start basis-full md:basis-1/4">
               <img src={footer.footerSmallImage.url} className="w-32 sm:w-48 lg:w-56" />
-              <p className="text-muted text-sm text-center md:text-left">{footer.textBelowSmallImage}</p>
+              {/* <p className="text-muted text-sm text-center md:text-left">{footer.textBelowSmallImage}</p> */}
             </div>
             <nav aria-label="Secondary navigation" className="text-sm flex flex-col items-center sm:items-start sm:flex-row text-center sm:text-left gap-6 justify-between md:justify-around grow basis-full md:basis-1/2 mt-2 fade-up">
               <div className="grid gap-3">
