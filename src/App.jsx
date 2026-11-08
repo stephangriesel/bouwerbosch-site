@@ -113,7 +113,7 @@ function App(eventType, handler) {
           <a
             href='/'
             aria-label='Go Home'
-            className='p-1 m-4 focus:outline-none focus-visible:ring-4 ring-accent rounded-full transition-shadow'
+            className='p-1 m-4 focus:outline-none'
           >
             <div>
               {/* Header Text */}
