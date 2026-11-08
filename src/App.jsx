@@ -20,114 +20,7 @@ import ReactMarkdown from 'react-markdown';
 
 import { Fade } from "react-awesome-reveal";
 
-// Query
-const query = `
-{
-  headerCollection {
-    items {
-      logo {
-        url
-      }
-      hero {
-        url
-      }
-      headerTitle
-      headerText
-      heroTitle
-      heroDescription
-      heroUrl
-      titleText
-      titleDescription
-      ctaText 
-    }
-  }
-  mainCollection {
-    items {
-      smallIntro
-      headlineIntro
-      paragraphIntro
-      paragraphIntroLink
-    }
-  }
-  imageSliderCollection {
-    items {
-      slider {
-        url
-        description
-      }
-      slider2 {
-        url
-        description
-      }
-      slider3 {
-        url
-        description 
-      }
-      slider4 {
-        url
-        description
-      }
-      slider5 {
-        url
-        description
-      }
-      slider6 {
-        url
-        description
-      }
-      slider7 {
-        url
-        description
-      }
-    }
-  }
-  bottomCollection {
-    items {
-      emailSignUpBackground {
-        url
-        description
-      }
-      smallIntro
-      headlineIntro
-      paragraphIntro
-      buttonText
-      buttonLabel
-    }
-  }
-  footerCollection {
-    items {
-      footerSmallImage {
-         url
-      }
-      textBelowSmallImage
-      columnOneTitle
-      columnOneLineOne
-      columnOneLineOneLink
-      columnOneLineTwo
-      columnOneLineTwoLink
-      columnOneLineThree
-      columnOneLineThreeLink
-      columnTwoTitle
-      columnTwoLineOne
-      columnTwoLineOneLink
-      columnTwoLineTwo
-      columnTwoLineTwoLink
-      columnTwoLineThree
-      columnTwoLineThreeLink
-      columnThreeTitle
-      columnThreeLineOne
-      columnThreeLineOneLink
-      columnThreeLineTwo
-      columnThreeLineTwoLink
-      columnThreeLineThree
-      columnThreeLineThreeLink
-    }
-  }
-}
-`;
-
-// Environment variables
-const { VITE_REACT_APP_SPACE_ID, VITE_REACT_APP_CDA_TOKEN } = import.meta.env;
+import { header, main, slides, bottom, footer } from './content';
 
 function App(eventType, handler) {
 
@@ -149,58 +42,6 @@ function App(eventType, handler) {
 
     return () => document.removeEventListener(eventType, internalHandler)
   }, [eventType])
-
-  // define the initial state
-  const [header, setHeader] = useState(null);
-  console.log('check header state:', header);
-
-  const [main, setMain] = useState(null);
-  console.log('check main state:', main);
-
-  const [image, setImage] = useState(null);
-  console.log('check image state:', image);
-
-  const [bottom, setBottom] = useState(null);
-  console.log('check bottom state:', bottom);
-  
-  const [footer, setFooter] = useState(null);
-  console.log('check footer state:', footer);
-
-  useEffect(() => {
-    window
-      // Change to template string & use template literals to define environment variable
-      .fetch(
-        `https://graphql.contentful.com/content/v1/spaces/${VITE_REACT_APP_SPACE_ID}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            // Authenticate the request
-            Authorization: `Bearer ${VITE_REACT_APP_CDA_TOKEN}`,
-          },
-          // send the GraphQL query
-          body: JSON.stringify({ query }),
-        }
-      )
-      .then((response) => response.json())
-      .then(({ data, errors }) => {
-        if (errors) {
-          console.error(errors);
-        }
-
-        // rerender the entire component with new data
-        setHeader(data.headerCollection.items[0]);
-        setMain(data.mainCollection.items[0]);
-        setImage(data.imageSliderCollection.items[0]);
-        setBottom(data.bottomCollection.items[0]);
-        setFooter(data.footerCollection.items[0]);
-      });
-  }, []);
-
-  // show a loading screen case the data hasn't arrived yet
-  if (!header || !main || !image || !bottom || !footer){
-    return '';
-  }
 
   // remove/add attribute function
   const removeDisabledAttribute = (els) => els.forEach(el => el.removeAttribute('disabled'));
@@ -299,7 +140,7 @@ function App(eventType, handler) {
           <div className='absolute bg-gradient-to-t inset-0 top-1/3 -bottom-32 from-bkg/80 to-transparent distance-1'></div>
           <img
             className='absolute h-full w-full object-cover object-top -z-5 distance-1'
-            src={header.hero.url}
+            src={header.hero}
             aria-hidden='true'
           />
           {/* <h1 className='text-5xl text-center z-10 font-bold tracking-wide py-12 px-96 drop-shadow-text-sm lg:drop-shadow-text-lg distance-2'>
@@ -433,18 +274,14 @@ function App(eventType, handler) {
               navigation={true}
               className="mySwiper"
             >
-              <SwiperSlide><img src={image.slider.url} alt={image.slider.description} /></SwiperSlide>
-              <SwiperSlide><img src={image.slider2.url} alt={image.slider2.description} /></SwiperSlide>
-              <SwiperSlide><img src={image.slider3.url} alt={image.slider3.description} /></SwiperSlide>
-              <SwiperSlide><img src={image.slider4.url} alt={image.slider4.description} /></SwiperSlide>
-              <SwiperSlide><img src={image.slider5.url} alt={image.slider5.description} /></SwiperSlide>
-              {/* <SwiperSlide><img src={image.slider6.url} alt={image.slider6.description} /></SwiperSlide>
-              <SwiperSlide><img src={image.slider7.url} alt={image.slider7.description} /></SwiperSlide> */}
+              {slides.map((slide, i) => (
+                <SwiperSlide key={i}><img src={slide.url} alt={slide.description} /></SwiperSlide>
+              ))}
             </Swiper>
             </Fade>
           </div>
           <section aria-labelledby='map' className='container flex flex-wrap md:space-x-16 space-y-12 md:space-y-0 justify-between items-center fade-up pt-16 pb-5'>
-            <img src={bottom.emailSignUpBackground.url} alt={bottom.emailSignUpBackground.description} width="400" className="grow md:flex-1" loading="lazy" />
+            <img src={bottom.image} alt={bottom.imageAlt} width="400" className="grow md:flex-1" loading="lazy" />
             <div className='grid gap-4 text-center md:text-left grow md:flex-1'>
               <div className='relative'>
                 <div className="hidden md:block absolute w-8 bg-accent/10 -left-4 h-full"></div>
@@ -494,70 +331,24 @@ function App(eventType, handler) {
         <footer className="border-t border-accent mt-16 sm:mt-10 lg:mt-10 py-6 sm:py-8 md:py-12 fade-up">
           <div className="container flex flex-wrap md:justify-between items-center md:items-start gap-12">
             <div className="grid gap-2 grow justify-items-center md:justify-items-start basis-full md:basis-1/4">
-              <img src={footer.footerSmallImage.url} className="w-32 sm:w-48 lg:w-56" />
+              <img src={footer.image} className="w-32 sm:w-48 lg:w-56" />
               {/* <p className="text-muted text-sm text-center md:text-left">{footer.textBelowSmallImage}</p> */}
             </div>
             <nav aria-label="Secondary navigation" className="text-sm flex flex-col items-center sm:items-start sm:flex-row text-center sm:text-left gap-6 justify-between md:justify-around grow basis-full md:basis-1/2 mt-2 fade-up">
-              <div className="grid gap-3">
-                <p className="font-bold underline decoration-accent decoration-4 underline-offset-2 tracking-wide px-2">{footer.columnOneTitle}</p>
-                <ul aria-label="About Traverse">
-                  <li>
-                    <a href={footer.columnOneLineOneLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
-                      {footer.columnOneLineOne}
-                    </a>
-                  </li>
-                  <li>
-                    <a href={footer.columnOneLineTwoLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
-                    {footer.columnOneLineTwo}
-                    </a>
-                  </li>
-                  <li>
-                    <a href={footer.columnOneLineThreeLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
-                    {footer.columnOneLineThree}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="grid gap-3">
-                <p className="font-bold underline decoration-accent decoration-4 underline-offset-2 tracking-wide px-2">{footer.columnTwoTitle}</p>
-                <ul aria-label="Traverse Locations">
-                  <li>
-                    <a href={footer.columnTwoLineOneLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
-                    {footer.columnTwoLineOne}
-                    </a>
-                  </li>
-                  <li>
-                    <a href={footer.columnTwoLineTwoLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
-                    {footer.columnTwoLineTwo}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
-                    {footer.columnTwoLineThree}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="grid gap-3">
-                <p className="font-bold underline decoration-accent decoration-4 underline-offset-2 tracking-wide px-2">{footer.columnThreeTitle}</p>
-                <ul aria-label="Contact Traverse">
-                  <li>
-                    <a href={footer.columnThreeLineOneLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
-                    {footer.columnThreeLineOne}
-                    </a>
-                  </li>
-                  <li>
-                    <a href={footer.columnThreeLineTwoLink} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
-                    {footer.columnThreeLineTwo}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
-                    {footer.columnThreeLineThree}
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              {footer.columns.map((column) => (
+                <div className="grid gap-3" key={column.title}>
+                  <p className="font-bold underline decoration-accent decoration-4 underline-offset-2 tracking-wide px-2">{column.title}</p>
+                  <ul aria-label={column.title}>
+                    {column.links.map((link) => (
+                      <li key={link.text}>
+                        <a href={link.url || '#'} className="hover:text-accent transition-colors focus:outline-none focus-visible:ring-4 ring-offset-2 ring-offset-bkg px-2 ring-accent rounded-full">
+                          {link.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </nav>
           </div>
         </footer>
